@@ -644,5 +644,11 @@ button:focus {
   background-color: #fcfcfc;
   border-radius: 4px;
 }
-.modal-close {
+.modal-close .modal-icon {
+  width: 24px;
+  height: 24px;
+  background-color: forestgreen;
+  color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
