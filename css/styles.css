@@ -14,6 +14,8 @@
   --secondary-background-color: #f4f4fd;
   --bgk-btn: #404bbf;
   --grd: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
+  --transition-property: color;
+  --transition-duration: 250ms;
 }
 
 body {
@@ -63,6 +65,8 @@ button {
   font-size: 16px;
   letter-spacing: 0.04em;
   color: var(--primary-wh-color);
+  transition: background-color var(--transition-duration)
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:is(:hover, :focus) {
@@ -112,13 +116,28 @@ a:hover {
   display: flex;
   align-items: center;
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 21px;
 }
 
 .header-navigation {
   display: flex;
   align-items: center;
   margin-right: auto;
+}
+
+.current {
+  position: relative;
+}
+
+.current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
 .site-nav {
@@ -132,6 +151,8 @@ a:hover {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--heading-text);
+  transition: var(--transition-property) var(--transition-duration)
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link-header:hover,
@@ -158,6 +179,8 @@ a:hover {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--heading-text);
+  transition: var(--transition-property) var(--transition-duration)
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .auth-nav .link-mail:hover,
@@ -170,6 +193,8 @@ a:hover {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--body-text);
+  transition: var(--transition-property) var(--transition-duration)
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .auth-nav .link-tel:hover,
@@ -361,6 +386,8 @@ a:hover {
   justify-content: center;
   border-radius: 50%;
   color: #ffffff;
+  transition: background-color var(--transition-duration)
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-soc-icon {
@@ -400,6 +427,10 @@ a:hover {
 }
 .customers-icon {
   fill: currentColor;
+  transition: border-color var(--transition-duration)
+      cubic-bezier(0.4, 0, 0.2, 1),
+    var(--transition-property) var(--transition-duration)
+      cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-link:is(:hover, :focus) {
@@ -425,6 +456,9 @@ a:hover {
   background-color: var(--secondary-background-color);
   cursor: pointer;
   border: transparent;
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:hover,
@@ -451,6 +485,11 @@ button:focus {
 .picture-item-list {
   display: flex;
   flex-basis: calc ((100% - 48px) / 3);
+  width: 360px;
+}
+.picture-item-list:hover .portfolio-top-text {
+  transform: translateY(0%);
+  transition: transform var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .picture-item-link {
@@ -462,6 +501,25 @@ button:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
   cursor: pointer;
+}
+
+.portfolio-top-text {
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--secondary-background-color);
+  background-color: var(--accent-color);
+  padding: 40px 32px;
+  height: 100%;
+  transform: translateY(100%);
+  overflow: auto;
+}
+
+.portfolio-top-wrap {
+  position: relative;
+  overflow: hidden;
 }
 
 .picture-title {
@@ -486,6 +544,10 @@ button:focus {
   border: 1px solid #e7e9fc;
   border-top: none;
   padding: 32px 16px;
+}
+
+.portfolio-top-text {
+  display: inline-block;
 }
 
 /* Footer */
@@ -547,6 +609,8 @@ button:focus {
   border-radius: 50%;
   fill: #f4f4fd;
   background-color: #434455;
+  transition: background-color var(--transition-duration)
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .soc-footer-link:is(:hover, :focus) {
@@ -560,4 +624,25 @@ button:focus {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #ffffff;
+}
+/* --------modal-------- */
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 72px 24px 24px 24px;
+  width: 408px;
+  min-height: 576px;
+  background-color: #fcfcfc;
+  border-radius: 4px;
+}
+.modal-close {
 }
