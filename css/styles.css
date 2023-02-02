@@ -515,6 +515,8 @@ button:focus {
   height: 100%;
   transform: translateY(100%);
   overflow: auto;
+
+  display: inline-block;
 }
 
 .portfolio-top-wrap {
@@ -546,9 +548,9 @@ button:focus {
   padding: 32px 16px;
 }
 
-.portfolio-top-text {
+/* .portfolio-top-text { 
   display: inline-block;
-}
+}*/
 
 /* Footer */
 
@@ -632,23 +634,40 @@ button:focus {
   width: 100%;
   height: 100%;
   background-color: rgba(46, 47, 66, 0.4);
+
+  transition: opacity var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1),
+    visibility var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 72px 24px 24px 24px;
+  transform: translate(-50%, -50%) scale(1);
+  padding: 24px;
   width: 408px;
   min-height: 576px;
   background-color: #fcfcfc;
   border-radius: 4px;
+  transition: transform 200ms linear;
 }
-.modal-close .modal-icon {
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+.modal-close {
   width: 24px;
   height: 24px;
-  background-color: forestgreen;
-  color: #ffffff;
-  border-radius: 50%;
+  background-color: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  text-align: center;
 }
